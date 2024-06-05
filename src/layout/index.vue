@@ -9,6 +9,8 @@
       </div>
       <app-main />
       <settings ref="settingRef" />
+
+      <FloatView />
     </div>
   </div>
 </template>
@@ -21,6 +23,11 @@ import defaultSettings from '@/settings'
 
 import useAppStore from '@/store/modules/app'
 import useSettingsStore from '@/store/modules/settings'
+// import FloatView from '@/views/logic/ext/components/FloatView.vue'
+// import useVersionStore from '@/views/logic/ext/store/version'
+// const versionStore = useVersionStore()
+
+// versionStore.getData()
 
 const settingsStore = useSettingsStore()
 const theme = computed(() => settingsStore.theme);

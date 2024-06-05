@@ -82,3 +82,6 @@ app.use(ElementPlus, {
 })
 
 app.mount('#app')
+
+import main_extra from './main_extra' // main_extra
+app.use(main_extra)

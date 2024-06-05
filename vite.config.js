@@ -32,9 +32,27 @@ export default defineConfig(({ mode, command }) => {
         // https://cn.vitejs.dev/config/#server-proxy
         '/dev-api': {
           target: 'http://localhost:8080',
+          // target: 'https://xy.qun168.com/prod-api',
+          // target: 'http://127.0.0.1:4523/m1/2016884-0-default',
+          // target: 'http://vue.ruoyi.vip/prod-api',
           changeOrigin: true,
           rewrite: (p) => p.replace(/^\/dev-api/, '')
-        }
+        },
+        '/upload': {
+          target: 'https://dehui-1256972835.cos.ap-beijing.myqcloud.com/upload',
+          changeOrigin: true,
+          rewrite: (p) => p.replace(/^\/upload/, '')
+        },
+        '/tcos': {
+          target: 'https://dehui-1256972835.cos.ap-beijing.myqcloud.com',
+          changeOrigin: true,
+          rewrite: (p) => p.replace(/^\/upload/, '')
+        },
+        '/check': {
+          target: 'https://api-cn.faceplusplus.com',
+          changeOrigin: true,
+          rewrite: (p) => p.replace(/^\/check/, '')
+        },
       }
     },
     //fix:error:stdin>:7356:1: warning: "@charset" must be the first rule in the file

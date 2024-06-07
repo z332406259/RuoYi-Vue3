@@ -25,6 +25,10 @@
         <el-button type="primary">测试屏幕</el-button>
       </RouterLink>
 
+      <RouterLink to="/testGis" v-if="dev">
+        <el-button type="primary">测试Gis</el-button>
+      </RouterLink>
+
       <Weather v-if="dev" />
 
       <div v-if="dev">{{ number }}</div>
@@ -41,14 +45,14 @@ import { ref } from 'vue'
 const dev = import.meta.env.DEV
 
 const number = ref('0')
-useNumberAnimation({
-  from: 0,
-  to: 30000,
-  duration: 4000,
-  onProgress: (v) => {
-    number.value = v.toFixed(2)
-  }
-})
+// useNumberAnimation({
+//   from: 0,
+//   to: 30000,
+//   duration: 4000,
+//   onProgress: (v) => {
+//     number.value = v.toFixed(2)
+//   }
+// })
 // const stars = ['白羊', '金牛', '双子', '巨蟹', '狮子', '处女', '天秤', '天蝎', '射手', '摩羯', '水瓶', '双鱼']
 // // const stars = ['白羊']
 // for (let i = 0; i < stars.length; i++) {

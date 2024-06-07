@@ -6,6 +6,7 @@ import vue3SeamlessScroll from 'vue3-seamless-scroll'
 import Particles from '@tsparticles/vue3'
 import { loadFull } from 'tsparticles'
 
+import '@/views/test/ext/router/test'
 // import '@/views/match/ext/router/match'
 // import '@/views/screen/ext/router/chart'
 // import '@/views/logic/ext/store/version'

@@ -1,69 +1,110 @@
 <template>
-  <div>
-    <div class="size-200 flex flex-wrap justify-evenly">
-      <RouterLink to="/testchart" v-if="dev">
-        <el-button type="primary">测试图表</el-button>
-      </RouterLink>
-      <RouterLink to="/css" v-if="dev">
-        <el-button type="primary">测试c3效果</el-button>
-      </RouterLink>
-      <RouterLink to="/testgrip" v-if="dev">
-        <el-button type="primary">测试grip效果</el-button>
-      </RouterLink>
-      <RouterLink to="/testgrid" v-if="dev">
-        <el-button type="primary">测试grid效果</el-button>
-      </RouterLink>
-      <RouterLink to="/testgrid2" v-if="dev">
-        <el-button type="primary">测试grid2效果</el-button>
-      </RouterLink>
+  <div class="p-30">
+    <div class="flex gap-50">
+      <div class="flex-1">
+        <div class="flex flex-wrap gap-20">
+          <el-card style="max-width: 480px" shadow="hover">
+            <div class="flex items-center gap-10 p-15">
+              <el-statistic :value="98500">
+                <template #title>
+                  <div class="mb-20 flex items-center justify-between text-24 font-bold">
+                    新增单身
+                    <el-tooltip effect="dark" content="昨日新增的单身数量" placement="top">
+                      <el-icon style="margin-left: 4px" :size="18">
+                        <Warning />
+                      </el-icon>
+                    </el-tooltip>
+                  </div>
+                </template>
+                <template #suffix>
+                  <el-icon style="color: var(--el-color-success)">
+                    <CaretTop />
+                  </el-icon>
+                </template>
+              </el-statistic>
+              <el-icon :size="80"><StarFilled /></el-icon>
+            </div>
+          </el-card>
+          <el-card style="max-width: 480px" shadow="hover">
+            <div class="flex items-center gap-10 p-15">
+              <el-statistic :value="98500">
+                <template #title>
+                  <div class="mb-20 flex items-center justify-between text-24 font-bold">
+                    新增会员
+                    <el-tooltip effect="dark" content="近7天内(1周)新增的会员数量" placement="top">
+                      <el-icon style="margin-left: 4px" :size="18">
+                        <Warning />
+                      </el-icon>
+                    </el-tooltip>
+                  </div>
+                </template>
+                <template #suffix>
+                  <el-icon style="color: var(--el-color-success)">
+                    <CaretTop />
+                  </el-icon>
+                </template>
+              </el-statistic>
+              <el-icon :size="80"><Avatar /></el-icon>
+            </div>
+          </el-card>
+        </div>
+        <div class="mt-30 flex gap-20">
+          <div class="text-24 font-bold">今日发布人员</div>
+          <el-button type="primary">全选1/3</el-button>
+          <el-button type="success">下载</el-button>
+          <el-button type="danger">删除</el-button>
+        </div>
+        <div class="mt-20 flex flex-wrap gap-20 p-10">
+          <div class="relative" v-for="(item, index) in 5" :key="index">
+            <el-checkbox v-model="checked" size="large" class="absolute right-7 top--6" style="transform: scale(1.8)" />
+            <div class="absolute bottom-0 right-0 p-5 text-12" style="color: var(--el-color-success)">已发布</div>
+            <el-card style="max-width: 480px" shadow="hover">
+              <div class="flex items-center gap-20">
+                <el-avatar :size="60" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" />
+                <div class="flex-col gap-5">
+                  <div class="text-20 font-bold">单身姓名</div>
+                  <div class="text-14">编号:Y6087X</div>
+                </div>
+                <div class="flex-1"></div>
+              </div>
+            </el-card>
+          </div>
+        </div>
+      </div>
+      <div class="h-full flex-col">
+        <el-card shadow="hover">
+          <div class="max-w-480 flex-col items-center gap-20 py-30">
+            <el-avatar :size="80" src="https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png" />
 
-      <RouterLink to="/testRotate" v-if="dev">
-        <el-button type="primary">测试旋转效果</el-button>
-      </RouterLink>
+            <div>联系方式:1556889900</div>
+            <div class="font-bold">星冶红娘妍妍</div>
+            <div class="font-bold">号段:A</div>
+          </div>
+        </el-card>
+        <div class="mb-20 mt-30 text-24 font-bold">会员到期提醒</div>
 
-      <RouterLink to="/testScreen" v-if="dev">
-        <el-button type="primary">测试屏幕</el-button>
-      </RouterLink>
-
-      <RouterLink to="/testGis" v-if="dev">
-        <el-button type="primary">测试Gis</el-button>
-      </RouterLink>
-
-      <Weather v-if="dev" />
-
-      <div v-if="dev">{{ number }}</div>
+        <el-card shadow="hover" class="flex-1">
+          <div class="w-full flex-col gap-10">
+            <div class="" v-for="(item, index) in 5" :key="index">
+              <span class="font-bold">单身XX</span>
+              9899会员即将到期 2024-01-02
+            </div>
+          </div>
+        </el-card>
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-// import Weather from '@/views/logic/ext/components/Weather.vue'
-// import { useNumberAnimation } from '@/views/logic/ext/hook/useNumberAnimation.js'
-// import { findStar, addStar, findStarMatch, addStarMatch } from '@/views/logic/ext/api/index'
 
-const dev = import.meta.env.DEV
-
-const number = ref('0')
-// useNumberAnimation({
-//   from: 0,
-//   to: 30000,
-//   duration: 4000,
-//   onProgress: (v) => {
-//     number.value = v.toFixed(2)
-//   }
-// })
-// const stars = ['白羊', '金牛', '双子', '巨蟹', '狮子', '处女', '天秤', '天蝎', '射手', '摩羯', '水瓶', '双鱼']
-// // const stars = ['白羊']
-// for (let i = 0; i < stars.length; i++) {
-//   const item1 = stars[i]
-//   for (let j = 0; j < stars.length; j++) {
-//     const item2 = stars[j]
-//     const res = await findStarMatch(item1, item2)
-//     console.log('结果', res)
-//     await addStarMatch(res.data)
-//   }
-// }
+const checked = ref(false)
 </script>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+// :deep(.relative .el-checkbox.el-checkbox--large .el-checkbox__inner) {
+//   width: 25px;
+//   height: 25px;
+// }
+</style>
